@@ -4,8 +4,6 @@ from __future__ import print_function
 import warnings
 import pandas as pd
 import seaborn as sns
-import matplotlib as mpl
-import matplotlib.pyplot as plt
 import numpy as np
 import math
 import pytweening
