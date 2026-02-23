@@ -1,4 +1,4 @@
-# Stochastic Gradient Descent for 3D Graph Drawing, SGD^3
+# Same Stats, Different Graphs: An Instant Transformation Method
 
 # Environment instructions
 
