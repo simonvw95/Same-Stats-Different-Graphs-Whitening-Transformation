@@ -9,6 +9,7 @@ from datasaurus_dozen_implem import save_scatter_and_results, create_gifs
 from project_implem import project_statistics
 from evaluation import save_pdf
 
+
 def get_statistics(coords):
 
     xm = torch.mean(coords[:, 0])
