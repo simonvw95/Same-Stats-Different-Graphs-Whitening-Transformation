@@ -7,4 +7,5 @@ torch
 tqdm
 scipy
 scikit-learn
+pdf2image
 pytweening
