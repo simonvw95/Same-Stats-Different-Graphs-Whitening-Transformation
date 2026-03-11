@@ -20,13 +20,13 @@ To recreate the experiments performed in the paper:
 ## DataDance DoubleDozen videos
 
 # Proposed Linear Transformation method results:
-<img src="dance_gifs/project_implem-datadance250.gif" width="425"/> 
+<img src="dance_gifs/project_implem-datadance250_stats.gif" width="425"/> 
 
 # SGD results:
-<img src="dance_gifs/sgd_implem-datadance250.gif" width="425"/>
+<img src="dance_gifs/sgd_implem-datadance250_stats.gif" width="425"/>
 
 # Datasaurus Dozen method results:
-<img src="dance_gifs/dd_implem-datadance250.gif" width="425"/>
+<img src="dance_gifs/dd_implem-datadance250_stats.gif" width="425"/>
 
 # DataDance DoubleDozen method results:
-<img src="dance_gifs/dddd_implem-datadance250.gif" width="425"/>
+<img src="dance_gifs/dddd_implem-datadance250_stats.gif" width="425"/>
