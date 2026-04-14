@@ -134,3 +134,5 @@ venv
 *.log
 /results/final_simvals/
 /results/tempstorage/
+/dance_gifs/temp/
+/dance_gifs/temp_cutout/
