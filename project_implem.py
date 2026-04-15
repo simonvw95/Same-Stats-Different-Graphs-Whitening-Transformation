@@ -66,15 +66,10 @@ if __name__ == '__main__':
     # for i in t_xsds:
         # t_pc = round(i + 0.055, 3)  # 0.505 for xsd, 0.055 for pc
         # t_xsd = round(i + 0.505, 3)
-        shape_start = 'random_cloud_n250_xm{}_ym{}_xsd{}_ysd{}_pc{}'.format(str(t_xm).replace('.', '-'),
-                                                                            str(t_ym).replace('.', '-'), str(t_xsd).replace('.', '-'),
-                                                                            str(t_ysd).replace('.', '-'), str(t_pc).replace('.', '-'))
 
         # shape_end = 'star_142'
         save_directory = f'project/results/{shape_end}' + '_xm{}_ym{}_xsd{}_ysd{}_pc{}'\
-            .format(str(t_xm).replace('.', '-'),
-                    str(t_ym).replace('.', '-'), str(t_xsd).replace('.', '-'),
-                    str(t_ysd).replace('.', '-'), str(t_pc).replace('.', '-'))
+            .format(str(t_xm), str(t_ym), str(t_xsd), str(t_ysd), str(t_pc)).replace('.', '-')
 
         if shape_end + '.csv' in os.listdir('target_datasets'):
 
@@ -90,6 +85,7 @@ if __name__ == '__main__':
 
             new_coords = project_statistics(curr_coords.detach(), t_xm=t_xm, t_ym=t_ym, t_xsd=t_xsd, t_ysd=t_ysd,
                                             t_pc=t_pc, eps=1e-8)
+
             save_scatter_and_results(pd.DataFrame(new_coords.detach().numpy(), columns=['x', 'y']), directory=save_directory,
                                      iter=shape_end + '_xsd{}_pc{}'.format(str(t_xsd).replace('.', '-'), str(t_pc).replace('.', '-')), dp=72,
                                      labels=["X Mean", "Y Mean", "X SD", "Y SD", "Corr."])
