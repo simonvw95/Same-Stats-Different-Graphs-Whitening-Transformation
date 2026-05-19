@@ -82,7 +82,7 @@ selected_coords *= 0.9
 selected_coords += 24
 
 # save as csv
-coords_file = os.path.join(output_dir, args.image.replace('.png', '_{}.csv'.format(str(N))))
+coords_file = os.path.join(output_dir, args.image.replace(args.image[-4:], '_{}.csv'.format(str(N))))
 df = pd.DataFrame(selected_coords)
 df.to_csv(coords_file, index=False, header=None)
 
@@ -146,7 +146,7 @@ for i, (label, value) in enumerate(zip(labels, res)):
         fontsize=fs, alpha=1, transform=ax_text.transAxes
     )
 
-plt.savefig(os.path.join(output_dir, args.image.replace('.png', '_{}.png'.format(str(N)))), dpi=72)
+plt.savefig(os.path.join(output_dir, args.image.replace(args.image[-4:], '_{}.png'.format(str(N)))), dpi=72)
 plt.clf()
 plt.cla()
 plt.close()
