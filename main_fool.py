@@ -10,17 +10,42 @@ from datasaurus_dozen_implem import get_values
 from project_implem import project_statistics
 # from datasaurus_dozen_implem import save_scatter_and_results
 
+
+class CustomRange(object):
+    # from https://stackoverflow.com/a/59678681
+    def __init__(self, start, end):
+        self.start = start
+        self.end = end
+
+    def __eq__(self, other):
+        return self.start <= other <= self.end
+
+    def __contains__(self, item):
+        return self.__eq__(item)
+
+    def __iter__(self):
+        yield self
+
+    def __repr__(self):
+        return '[{0},{1}]'.format(self.start, self.end)
+
+
 parser = argparse.ArgumentParser()
 
 # parser.add_argument("start", help="Starting (seed) dataset (default=random cloud, not relevant for the linear transformation)", type=str, default='random_cloud')
 parser.add_argument("-t", "--target", help="Target dataset (default=star_142)", type=str, const='star_142', nargs='?')
 # parser.add_argument("method", help="Method used for fooling (default=linear transformation)", type=str, default='linear transformation')
 
-parser.add_argument("-xm", "--XMean", help="Float of the specified x mean [-100,100] (default=54.265)", type=float, const=54.265, nargs='?')
-parser.add_argument("-ym", "--YMean", help="Float of the specified Y mean [-100,100] (default=47.835)", type=float, const=47.835, nargs='?')
-parser.add_argument("-xsd", "--XStDev", help="Float of the specified X standard deviation [-50,50] (default=16.765)", type=float, const=16.765, nargs='?')
-parser.add_argument("-ysd", "--YStDev", help="Float of the specified Y standard deviation [-50,50] (default=26.935)", type=float, const=26.935, nargs='?')
-parser.add_argument("-pc", "--PearCorr", help="Float of the specified Pearson Correlation [-1,1] (default=-0.065)", type=float, const=-0.065, nargs='?')
+parser.add_argument("-xm", "--XMean", help="Float of the specified x mean [-100,100] (default=54.265)",
+                    type=float, const=54.265, nargs='?', choices=CustomRange(-100, 100))
+parser.add_argument("-ym", "--YMean", help="Float of the specified Y mean [-100,100] (default=47.835)",
+                    type=float, const=47.835, nargs='?', choices=CustomRange(-100, 100))
+parser.add_argument("-xsd", "--XStDev", help="Float of the specified X standard deviation [-50,50] (default=16.765)",
+                    type=float, const=16.765, nargs='?', choices=CustomRange(-50, 50))
+parser.add_argument("-ysd", "--YStDev", help="Float of the specified Y standard deviation [-50,50] (default=26.935)",
+                    type=float, const=26.935, nargs='?', choices=CustomRange(-50, 50))
+parser.add_argument("-pc", "--PearCorr", help="Float of the specified Pearson Correlation [-1,1] (default=-0.065)",
+                    type=float, const=-0.065, nargs='?', choices=CustomRange(-1, 1))
 
 # parser.add_argument("acc", help="Integer of the number of decimals we should keep the same [0,3] (default=2)", type=float, default=2)
 args = parser.parse_args()
