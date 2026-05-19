@@ -6,7 +6,19 @@ Python version 3.10.4
 
 Install packages with: 'pip install -r requirements.txt'. 
 
-## Recreating target shapes as a scatter plot
+## Recreating target shapes with a desired set of summary statistics
+1. To transform an existing dataset with a desired shape into a dataset with a target set of desired summary statistics (using the proposed linear transformation method) run **main_fool.py**.
+- 'python main_fool.py --help' to see the arguments
+- e.g. 'python main_fool.py -t simple_tree_850 -xm 60 -ym -xsd -ysd -pc 0.1'
+- The above example will take the input dataset (simple_tree_850.csv located in target_datasets/) and morph it to have an X mean of 60, the default Y mean value (47.835), the default X standard deviation value (16.765), the default Y standard deviation value (26.935) and a pearson correlation of 0.1. You can experiment with these values.
+2. (Optional): To create a scatterplot and a dataset from an existing image run **pic_to_dataset.py**.
+- 'python pic_to_dataset.py --help' to see the arguments
+- e.g. 'python pic_to_dataset.py -img simple_tree.png -n 850'
+- The above example will take the input image (simple_tree.png located in target_datasets/input_images/) and turn it into a point cloud of 850 points. Note that this script is only tested for black and white images, where the background is white and a black pen is used.
+- The newly created scatterplot and dataset will be saved in /target_datasets/ and can now be used using **main_fool.py**.
+
+
+## Recreating exact experimental conditions
 
 To recreate the experiments performed in the paper:
 1. Select the method for recreating target shapes:
