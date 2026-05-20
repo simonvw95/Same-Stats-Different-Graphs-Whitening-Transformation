@@ -24,27 +24,39 @@ output_dir = 'target_datasets/'
 N = args.npoints
 ############################################################################################################
 
-# load the black-and-white image in grayscale
-image = cv2.imread(spec_dir + args.image, cv2.IMREAD_GRAYSCALE)
+# # load the black-and-white image in grayscale
+# image = cv2.imread(spec_dir + args.image, cv2.IMREAD_GRAYSCALE)
+#
+# # define the range for light gray and black color (we want to keep these regions)
+# black_threshold = 50  # black pixel intensity threshold (0-255)
+# light_gray_min = 100  # minimum intensity for light gray
+# light_gray_max = 220  # maximum intensity for light gray
+#
+# # create a mask identifying the black and light gray areas
+# mask = np.zeros_like(image, dtype=np.uint8)
+# mask[(image <= black_threshold) | ((image >= light_gray_min) & (image <= light_gray_max))] = 255
+#
+# # get the coordinates of the black and light gray areas
+# coordinates = np.column_stack(np.where(mask == 255))
 
-# define the range for light gray and black color (we want to keep these regions)
-black_threshold = 50  # black pixel intensity threshold (0-255)
-light_gray_min = 100  # minimum intensity for light gray
-light_gray_max = 220  # maximum intensity for light gray
-
-# create a mask identifying the black and light gray areas
-mask = np.zeros_like(image, dtype=np.uint8)
-mask[(image <= black_threshold) | ((image >= light_gray_min) & (image <= light_gray_max))] = 255
+image = cv2.imread(spec_dir + args.image)
+img_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+# apply binary thresholding
+ret, thresh = cv2.threshold(img_gray, 150, 255, cv2.THRESH_BINARY)
 
 # get the coordinates of the black and light gray areas
-coordinates = np.column_stack(np.where(mask == 255))
+coordinates = np.column_stack(np.where(thresh == 0))
 
 # evenly sample the coordinates from the black and light gray areas
 # we want to distribute N points over the identified area
 step_size = max(1, len(coordinates) // N)
 
 # select the coordinates for the dots (evenly spaced)
-selected_coords = coordinates[::step_size][:N]
+# selected_coords = coordinates[::step_size][:N]
+
+# select the coordinates for the dots randomly
+idx = np.random.choice(len(coordinates), N, replace=False)
+selected_coords = coordinates[idx]
 
 # create a blank white image to draw the dots
 output_image = np.ones_like(image, dtype=np.uint8) * 255  # White background
