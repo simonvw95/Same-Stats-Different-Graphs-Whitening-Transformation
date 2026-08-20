@@ -586,20 +586,27 @@ def create_transformed_figure(df):
     # --------------------------------------------------------
 
     ax = fig.add_subplot(gs[0, 0])
-
-    sns.regplot(
-        x="x",
-        y="y",
-        data=df,
-        ci=None,
-        fit_reg=False,
-        scatter_kws={
-            "s": 4,
-            "alpha": 0.9,
-            "color": "black"
-        },
-        ax=ax
+    
+    ax.scatter(df["x"],
+        df["y"],
+        s=4,
+        alpha=0.9,
+        color="black"
     )
+
+    # sns.regplot(
+        # x="x",
+        # y="y",
+        # data=df,
+        # ci=None,
+        # fit_reg=False,
+        # scatter_kws={
+            # "s": 4,
+            # "alpha": 0.9,
+            # "color": "black"
+        # },
+        # ax=ax
+    # )
 
     ax.set_xlim(
         default_min,
