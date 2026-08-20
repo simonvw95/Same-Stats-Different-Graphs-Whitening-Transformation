@@ -135,7 +135,6 @@
 			flex-direction: column;
 			padding: 20px;
 			box-sizing: border-box;
-			background: #f5f5f5;
 			overflow: hidden;
 		}
 
@@ -243,7 +242,7 @@
 <header>
 
     <p>Same Stats, Different Graphs Made Simple and Fast by Linear Transformations <br>
-	Give the page a few seconds to load the Python packages.
+	Give the page a few seconds to load the Python environment
 	</p>
 
 </header>
@@ -275,11 +274,17 @@
 		<div id="output-section">
 		
 			<div class="image-container">
-				<img id="processed-image" />
+				<img 
+					id="processed-image"
+					src="ghost2.png"
+					style="display: block;"/>
 			</div>
 			
 			<div class="image-container">
-				<img id="scatter-image" />
+				<img 
+					id="scatter-image" 
+					src="ghost2_850.png"
+					style="display: block;"/>
 			</div>
 			
 		</div>
@@ -358,33 +363,28 @@
 				</div>
 				
 				<button
-					id="transform-button"
-					disabled>
+					id="transform-button">
 					Transform Dataset
 				</button>
 
 			</div>
 
-		</div>
-
+		</div>	
+		
 		<div id="target-statistics-output">
-			<!-- script2.py output will go here later -->
-		</div>
-		
-		
-		<img
-			id="transformed-image"
-			style="
-				max-width: 90%;
-				max-height: 90%;
-				object-fit: contain;
-				display: none;
-			"
-		>
+			<img
+				id="transformed-image"
+				src="ghost2_post_850.png"
+				style="
+					max-width: 90%;
+					max-height: 90%;
+					object-fit: contain;
+					display: block;"
+			/>
 
-		<div id="image-placeholder">
-			Enter target statistics and transform the dataset.
 		</div>
+		
+		
 
 	</div>
 
