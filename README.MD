@@ -1,5 +1,6 @@
 # Same Stats, Different Graphs: An Instant Transformation Method
 
+https://diglib.eg.org/server/api/core/bitstreams/ed5978ff-a171-46ae-a184-a82602930c44/content
 # Environment instructions
 
 Python version 3.10.4
